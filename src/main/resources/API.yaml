@@ -1,0 +1,547 @@
+swagger: '2.0'
+info:
+  description: CUSTOMER MANAGEMENT REST API documentation for Customer Portal
+  version: '1.0'
+  title: CUSTOMER PORTAL | CUSTOMER MANAGEMENT REST APIs
+  termsOfService: Terms of Service
+  contact:
+    name: DIPANKAR CHATTERJEE
+    email: dipankar.c@hcl.com
+  license:
+    name: LICENSE INFORMATION
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
+host: 'localhost:11001'
+basePath: /
+tags:
+  - name: category-management
+    description: CUSTOMER CATEGORY MANAGEMENT
+  - name: customer-management
+    description: CUSTOMER MANAGEMENT
+  - name: customer-type-management
+    description: CUSTOMER TYPE MANAGEMENT
+paths:
+  /CUSTOMER-MANAGEMENT/V1.0/CATEGORY/CREATE:
+    post:
+      tags:
+        - category-management
+      summary: CREATE CUSTOMER CATEGORY
+      operationId: createCustomerCategoryUsingPOST
+      consumes:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - in: body
+          name: _request
+          description: _request
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerCategoryRequestBean'
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerCategoryResponseBean'
+        '201':
+          description: Created
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CATEGORY/LIST:
+    get:
+      tags:
+        - category-management
+      summary: LIST ALL CUSTOMER CATEGORIES
+      operationId: getAllCustomerCategoriesUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerCategory'
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CATEGORY/REMOVE:
+    delete:
+      tags:
+        - category-management
+      summary: REMOVE CUSTOMER CATEGORY
+      operationId: removeCustomerCategoryUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - name: customerCategoryId
+          in: query
+          description: customerCategoryId
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerCategoryResponseBean'
+        '204':
+          description: No Content
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER-TYPE/CREATE:
+    post:
+      tags:
+        - customer-type-management
+      summary: CREATE CUSTOMER TYPE
+      operationId: createCustomerTypeUsingPOST
+      consumes:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - in: body
+          name: _request
+          description: _request
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerTypeRequestBean'
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerTypeResponseBean'
+        '201':
+          description: Created
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER-TYPE/LIST:
+    get:
+      tags:
+        - customer-type-management
+      summary: LIST ALL CUSTOMER TYPES
+      operationId: getAllCustomerTypesUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerType'
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER-TYPE/REMOVE:
+    delete:
+      tags:
+        - customer-type-management
+      summary: REMOVE CUSTOMER TYPE
+      operationId: removeCustomerTypeUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - name: customerTypeId
+          in: query
+          description: customerTypeId
+          required: true
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerTypeResponseBean'
+        '204':
+          description: No Content
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/CREATE:
+    post:
+      tags:
+        - customer-management
+      summary: CREATE CUSTOMER
+      operationId: createCustomerUsingPOST
+      consumes:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - in: body
+          name: _request
+          description: _request
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerRequestBean'
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerResponseBean'
+        '201':
+          description: Created
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/FIND:
+    get:
+      tags:
+        - customer-management
+      summary: FIND SPECIFIC CUSTOMER
+      operationId: getCustomerByDisplayIdUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: customerDisplayId
+          in: query
+          description: customerDisplayId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/Customer'
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/LIST:
+    get:
+      tags:
+        - customer-management
+      summary: LIST ALL CUSTOMERS
+      operationId: getAllCustomersUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Customer'
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/REMOVE:
+    delete:
+      tags:
+        - customer-management
+      summary: REMOVE CUSTOMER
+      operationId: removeCustomerUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - name: customerDisplayId
+          in: query
+          description: customerDisplayId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerResponseBean'
+        '204':
+          description: No Content
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/SEARCH:
+    get:
+      tags:
+        - customer-management
+      summary: SEARCH CUSTOMERS
+      operationId: getCustomerByDisplayIdUsingGET_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: customerDisplayId
+          in: query
+          description: customerDisplayId
+          required: false
+          type: string
+        - name: customerName
+          in: query
+          description: customerName
+          required: false
+          type: string
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Customer'
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+  /CUSTOMER-MANAGEMENT/V1.0/CUSTOMER/UPDATE:
+    put:
+      tags:
+        - customer-management
+      summary: UPDATE CUSTOMER
+      operationId: updateCustomerUsingPUT
+      consumes:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      produces:
+        - application/json
+        - application/x-javascript
+        - application/javascript
+      parameters:
+        - in: body
+          name: _request
+          description: _request
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerRequestBean'
+        - name: customerDisplayId
+          in: query
+          description: customerDisplayId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: SUCCESSFUL OPERATION
+          schema:
+            $ref: '#/definitions/CustomerResponseBean'
+        '201':
+          description: Created
+        '401':
+          description: UNAUTHORIZED TO VIEW RESOURCE
+        '403':
+          description: ACCESS FORBIDDEN
+        '404':
+          description: RESOURCE NOT FOUND
+definitions:
+  CustomerTypeRequestBean:
+    type: object
+    properties:
+      customerType:
+        type: string
+        example: STANDARD
+  CustomerCategoryRequestBean:
+    type: object
+    properties:
+      customerCategory:
+        type: string
+        example: BUSINESS
+  CustomerResponseBean:
+    type: object
+    properties:
+      customerDisplayId:
+        type: string
+        example: C9001
+      message:
+        type: string
+        example: CUSTOMER CREATED/UPDATED/DELETED SUCCESSFULLY
+  Customer:
+    type: object
+    properties:
+      additionalAttributes:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalAttributes'
+      customerAddresses:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerAddress'
+      customerCategory:
+        $ref: '#/definitions/CustomerCategory'
+      customerDisplayId:
+        type: string
+      customerName:
+        type: string
+      customerType:
+        $ref: '#/definitions/CustomerType'
+      emailAddress:
+        type: string
+      id:
+        type: integer
+        format: int64
+  CustomerCategoryResponseBean:
+    type: object
+    properties:
+      customerCategoryName:
+        type: string
+        example: BUSINESS | CONSUMER
+      message:
+        type: string
+        example: CUSTOMER CATEGORY CREATED/DELETED SUCCESSFULLY
+  CustomerAddressRequestBean:
+    type: object
+    properties:
+      addressLine1:
+        type: string
+        example: 330 Potrero Ave
+      addressLine2:
+        type: string
+        example: xyz street
+      city:
+        type: string
+        example: Sunnyvale
+      country:
+        type: string
+        example: USA
+      state:
+        type: string
+        example: CA
+      zipCode:
+        type: string
+        example: '90001'
+  CustomerType:
+    type: object
+    properties:
+      customerTypeName:
+        type: string
+      id:
+        type: integer
+        format: int64
+  CustomerCategory:
+    type: object
+    properties:
+      customerCategoryName:
+        type: string
+      id:
+        type: integer
+        format: int64
+  AdditionalAttributes:
+    type: object
+    properties:
+      additionalAttributeName:
+        type: string
+      additionalAttributeValue:
+        type: string
+      id:
+        type: integer
+        format: int64
+  CustomerRequestBean:
+    type: object
+    properties:
+      additionalAttributesRequestBeanList:
+        type: array
+        items:
+          $ref: '#/definitions/AdditionalAttributesRequestBean'
+      customerAddressRequestBeanList:
+        type: array
+        items:
+          $ref: '#/definitions/CustomerAddressRequestBean'
+      customerCategory:
+        type: string
+        example: BUSINESS | CONSUMER
+      customerName:
+        type: string
+        example: CUSTOMER NAME
+      customerType:
+        type: string
+        example: STANDARD | PREMIUM
+      emailAddress:
+        type: string
+        example: xyz@mno.com
+  AdditionalAttributesRequestBean:
+    type: object
+    properties:
+      additionalAttributeName:
+        type: string
+      additionalAttributeValue:
+        type: string
+  CustomerTypeResponseBean:
+    type: object
+    properties:
+      customerTypeName:
+        type: string
+        example: PREMIUM | STANDARD
+      message:
+        type: string
+        example: CUSTOMER TYPE CREATED/DELETED SUCCESSFULLY
+  CustomerAddress:
+    type: object
+    properties:
+      addressLine1:
+        type: string
+      addressLine2:
+        type: string
+      city:
+        type: string
+      country:
+        type: string
+      id:
+        type: integer
+        format: int32
+      state:
+        type: string
+      zipCode:
+        type: string

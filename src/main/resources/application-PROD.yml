@@ -1,0 +1,39 @@
+
+# ----------------------------------------
+# WEB PROPERTIES
+# ----------------------------------------
+# EMBEDDED SERVER CONFIGURATION
+server:
+  port: 12001
+  
+
+# ----------------------------------------
+# DATASOURCE PROPERTIES
+# ----------------------------------------
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+      
+      
+      
+      
+      
+      
+      
+#-----------------------------------------
+# CUSTOM PROPERTIES - H2 Database
+#----------------------------------------- 
+app:
+  prod:
+    datasource:
+      jdbc-url: jdbc:h2:file:~/customer_management
+      username: root
+      password: admin
+      driver-class-name: org.h2.Driver
+      maximum-pool-size: 30
+      
+  h2:
+    console:
+      enabled: true
+      path: /h2

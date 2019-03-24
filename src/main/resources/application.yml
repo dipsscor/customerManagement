@@ -1,0 +1,79 @@
+# ----------------------------------------
+# GENERIC CORE PROPERTIES
+# PROFILE SPECIFIC IN DEV , QA AND PROD APPLICATION-{PROFILE}.YML FILES 
+# ----------------------------------------
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+#LOGGING
+logging:
+  file: logs/application.log
+
+    
+    
+
+    
+#-----------------------------------------
+# PROFILES
+#-----------------------------------------
+spring:
+  profiles:
+    active:
+      - PROD
+  # ----------------------------------------
+  # GENERIC DATASOURCE PROPERTIES
+  # ----------------------------------------
+  jpa:
+    show-sql: true
+  datasource:
+    tomcat:
+      max-wait: 10000
+      max-active: 50
+      test-on-borrow: true
+
+
+      
+    
+    
+#-----------------------------------------
+# CUSTOM PROPERTIES
+#-----------------------------------------   
+config:
+  props:
+    path: /config
+    
+    
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+info:
+  component: Customer Management App
+  
+endpoints:
+  enabled: true
+  sensitive: false
+  actuator:
+    enabled: true
+  metrics:
+    enabled: true
+    sensitive: false
+  info:
+    enabled: true
+    sensitive: false
+  health:
+    enabled: true
+    sensitive: false
+  auditevents:
+    enabled: false
+  beans:
+    enabled: false
+  docs:
+    enabled: true
+  dump:
+    enabled: false
+management:
+  context-path: /monitoring
+  security:
+    enabled: false
+
